@@ -1,6 +1,6 @@
 import { IUserModel } from './../services/UserService/IUserModel';
 import mongoose from 'mongoose';
-
+import User from './User/userModel'
 export class BaseRepository {
 
     /**
@@ -8,8 +8,6 @@ export class BaseRepository {
      */
     public insert(username: String, password: String, role: String) {
 
-        const schema = new mongoose.Schema({ username: String, password: String, role: String });
-        const User = mongoose.model('users', schema);
         const user = new User({ username, password, role });
         return user.save().then(res => {
             console.log("user inserted...!");
@@ -25,8 +23,6 @@ export class BaseRepository {
      * name
      */
     public find(username: String, password: String) {
-        const schema = new mongoose.Schema({ name: String, password: String });
-        const User = mongoose.model('users', schema);
         // const user = new User({ name, password });
         return User.findOne({ username, password }).then(res => {
             console.log("user exist...!");

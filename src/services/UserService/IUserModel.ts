@@ -3,6 +3,5 @@ export interface IUserModel {
         name: String,
         password: String,
         role: String,
-        authHeader: any
     ): Promise<any>;
 }

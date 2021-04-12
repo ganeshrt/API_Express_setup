@@ -19,18 +19,14 @@ class UserController {
      * createUser
      */
     public createUser = async ({ params, headers, body }: any) => {
-        let result = "";
-        const authHeader = headers.authorization;
-
         const { username, password, role } = body;
-        logger("Create User :::::::::", username)
-        return await userService.createUser(username, password, role, authHeader);
-
+        logger("User Controller -Create User :::::::::", body)
+        return await userService.createUser(username, password, role);
     }
 
     public getUser = async ({ params, headers, body }: any) => {
         const { username, password } = body;
-        logger("get User ::::", username)
+        logger("User Controller - get User ::::", body)
         return await userService.getUser(username, password);
 
     }
